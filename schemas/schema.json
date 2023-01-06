@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wurzelschema",
+  "description": "Dies ist das Wurzelschema, das die Schemas für die einzlenen Felder referenziert.",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JSON-LD Context",
+      "description": "Das Schema für das @context-Feld",
+      "type": "string",
+      "format": "uri",
+      "pattern": ".jsonld$"
+    },
+    "id": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "URI",
+      "description": "Das Schema für das id-Feld, d.h. die URI der Ressource",
+      "type": "string",
+      "format": "uri"
+    },
+    "gndIdentifier": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "GND Identifier",
+      "description": "Das Schema für das gndIdentifier-Feld",
+      "type": "string"
+    },
+    "type": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Type",
+      "description": "Das Schema für das type-Feld",
+      "type": "array",
+      "items": {
+        "type": "string", 
+        "enum": [
+          "AuthorityResource", 
+          "Person", 
+          "RoyalOrMemberOfARoyalHouse"
+        ]
+      },
+      "default": true,
+      "minItems": 2
+    },
+    "preferredName": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Vorzugsbezeichnung",
+      "description": "Das Schema für das preferredName-Feld",
+      "type": "string"
+    },
+    "variantName": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Verweisungsform",
+      "description": "Das Schema für das variantName-Feld",
+      "type": "array"
+    },
+    "contributor": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Profession oder Beruf",
+      "description": "Das Schema für das professionOrOccupation-Feld"
+    },
+    "professionOrOccupation": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Profession oder Beruf",
+      "description": "Das Schema für das professionOrOccupation-Feld",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^https://"
+          }
+        }
+      }
+    },
+    "gender": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Gender",
+        "description": "Das Schema für das Gender-Feld",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "enum": ["Weiblich", "Männlich"]
+            }
+          }
+        }
+    },
+    "geographicAreaCode": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Geographic Area Code",
+      "description": "Das Schema für das geographicAreaCode-Feld",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^https://"
+          }
+        }
+      }
+    }
+  },
+  "required": ["gender", "id", "@context", "gndIdentifier", "preferredName", "type"]
+}
